@@ -1,4 +1,4 @@
-package ru.mephi.komzavladislav.lab1;
+package ru.mephi.komzavladislav.lab2;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,17 +9,27 @@ import java.util.Collections;
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public abstract class MyListTest {
+class MyGenericLinkedListTest {
+
     protected static final String oneItemListItem = "This is the only item in this list";
 
-    protected MyList emptyList;
-    protected MyList oneItemList;
-    protected MyList tenItemsList;
+    protected MyGenericLinkedList<Integer> emptyList;
+    protected MyGenericLinkedList<String> oneItemList;
+    protected MyGenericLinkedList<Double> tenItemsList;
 
     @BeforeEach
-    abstract void setUp();
+    void setUp(){
+        emptyList = new MyGenericLinkedList<Integer>();
+
+        oneItemList = new MyGenericLinkedList<String>();
+        oneItemList.add(oneItemListItem);
+
+        tenItemsList = new MyGenericLinkedList<Double>();
+        for (int i = 0; i < 10; i++) {
+            tenItemsList.add((double) i);
+        }
+    }
 
     @Test
     public void testEmptyListEmptiness(){
@@ -39,39 +49,39 @@ public abstract class MyListTest {
 
     @Test
     void testAddingToEndOfList() {
-        addAndGetWithAssertions(oneItemList, 2);
+        addAndGetWithAssertions(oneItemList, "2");
         assertEquals(oneItemListItem, oneItemList.get(0));
 
-        addAndGetWithAssertions(tenItemsList, "Fish", 10);
+        addAndGetWithAssertions(tenItemsList, 12345., 10);
         assertEquals(9, tenItemsList.get(9));
     }
 
     @Test
     void testAddingOverEndOfList() {
-        addAndGetWithAssertions(oneItemList, 2, 100);
+        addAndGetWithAssertions(oneItemList, "2", 100);
         assertEquals(oneItemListItem, oneItemList.get(0));
 
-        addAndGetWithAssertions(tenItemsList, "Fish", 11);
+        addAndGetWithAssertions(tenItemsList, 228335., 11);
         assertEquals(9, tenItemsList.get(9));
     }
 
     @Test
     void testAddingToStartOfList() {
-        addAndGetWithAssertions(oneItemList, 2, 0);
+        addAndGetWithAssertions(oneItemList, "2", 0);
         assertEquals(oneItemListItem, oneItemList.get(1));
 
-        addAndGetWithAssertions(tenItemsList, "Fish", 0);
+        addAndGetWithAssertions(tenItemsList, -228335., 0);
         assertEquals(0, tenItemsList.get(1));
     }
 
     @Test
     void testAddingOverStartOfList() {
         // Adding to the end of one item list
-        addAndGetWithAssertions(oneItemList, 2, -1);
+        addAndGetWithAssertions(oneItemList, "2", -1);
         assertEquals(oneItemListItem, oneItemList.get(1));
 
         // Adding string to the end of the list
-        addAndGetWithAssertions(tenItemsList, "Fish", -100);
+        addAndGetWithAssertions(tenItemsList, 98765., -100);
         assertEquals(0, tenItemsList.get(1));
     }
 
@@ -117,9 +127,9 @@ public abstract class MyListTest {
     void testRemoveOnlyElement(){
         removeWithAssertions(oneItemList, 0);
 
-        addAndGetWithAssertions(oneItemList, 1);
-        addAndGetWithAssertions(oneItemList, 0, 0);
-        assertEquals(1, oneItemList.get(1));
+        addAndGetWithAssertions(oneItemList, "1");
+        addAndGetWithAssertions(oneItemList, "0", 0);
+        assertEquals("1", oneItemList.get(1));
     }
 
     @Test
@@ -148,18 +158,18 @@ public abstract class MyListTest {
 
     @Test
     void testSetOnOnlyElement() {
-        setWithAssertions(oneItemList, 10, 0);
+        setWithAssertions(oneItemList, "1000", 0);
         setWithAssertions(oneItemList, "10", 10);
-        setWithAssertions(oneItemList, new Date(), -10);
+        setWithAssertions(oneItemList, new Date().toString(), -10);
     }
 
     @Test
     void testSetMultipleElement() {
-        setWithAssertions(tenItemsList, "Middle", 5);
-        setWithAssertions(tenItemsList, "Start", 0);
-        setWithAssertions(tenItemsList, "Negative", -10);
-        setWithAssertions(tenItemsList, "End", 9);
-        setWithAssertions(tenItemsList, "Overflow", 10);
+        setWithAssertions(tenItemsList, 4.9, 5);
+        setWithAssertions(tenItemsList, -1., 0);
+        setWithAssertions(tenItemsList, -11111., -10);
+        setWithAssertions(tenItemsList, 10., 9);
+        setWithAssertions(tenItemsList, 101010., 10);
 
     }
 
@@ -168,39 +178,36 @@ public abstract class MyListTest {
         assertEquals(-1, emptyList.index(0));
         assertFalse(emptyList.contains(0));
 
-        assertEquals(-1, oneItemList.index(0));
-        assertFalse(oneItemList.contains(0));
+        assertEquals(-1, oneItemList.index(""));
+        assertFalse(oneItemList.contains(""));
         assertEquals(0, oneItemList.index(oneItemListItem));
         assertTrue(oneItemList.contains(oneItemListItem));
     }
 
     @Test
     void testFind() {
-        assertEquals(-1, tenItemsList.index(10));
-        assertFalse(tenItemsList.contains(10));
+        assertEquals(-1, tenItemsList.index(10.));
+        assertFalse(tenItemsList.contains(10.));
 
-        assertEquals(0, tenItemsList.index(0));
-        assertTrue(tenItemsList.contains(0));
-        assertEquals(9, tenItemsList.index(9));
-        assertTrue(tenItemsList.contains(9));
-        assertEquals(5, tenItemsList.index(5));
-        assertTrue(tenItemsList.contains(5));
+        assertEquals(0, tenItemsList.index(0.));
+        assertTrue(tenItemsList.contains(0.));
+        assertEquals(9, tenItemsList.index(9.));
+        assertTrue(tenItemsList.contains(9.));
+        assertEquals(5, tenItemsList.index(5.));
+        assertTrue(tenItemsList.contains(5.));
 
-        tenItemsList.set("String among ints", 5);
-        assertEquals(5, tenItemsList.index("String among ints"));
-        assertTrue(tenItemsList.contains("String among ints"));
+        tenItemsList.set(111111., 5);
+        assertEquals(5, tenItemsList.index(111111.));
+        assertTrue(tenItemsList.contains(111111.));
     }
 
     @Test
-    abstract void testToString();
-
-    @Test
     void testIterator() {
-        assertIterableEquals(new ArrayList(), emptyList);
+        assertIterableEquals(Collections.EMPTY_LIST, emptyList);
 
         assertIterableEquals(Collections.singletonList(oneItemListItem), oneItemList);
 
-        assertIterableEquals(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8, 9), tenItemsList);
+        assertIterableEquals(Arrays.asList(0., 1., 2., 3., 4., 5., 6., 7., 8., 9.), tenItemsList);
     }
 
     @Test
@@ -214,7 +221,7 @@ public abstract class MyListTest {
 
     }
 
-    protected void addAndGetWithAssertions(MyList list, Object item){
+    protected <T> void addAndGetWithAssertions(MyGenericLinkedList<T> list, T item){
         int len = list.size();
 
         list.add(item);
@@ -222,7 +229,7 @@ public abstract class MyListTest {
         assertEquals(len + 1, list.size());
     }
 
-    protected void addAndGetWithAssertions(MyList list, Object item, int position){
+    protected <T> void addAndGetWithAssertions(MyGenericLinkedList<T> list, T item, int position){
         int len = list.size();
         int truePosition = Math.max(0, Math.min(position, len));
 
@@ -232,18 +239,17 @@ public abstract class MyListTest {
         assertEquals(len + 1, list.size());
     }
 
-    private void removeWithAssertions(MyList list, int position){
+    private <T> void removeWithAssertions(MyGenericLinkedList<T> list, int position){
         int len = list.size();
         Object toBeRemoved = list.get(position);
 
         Object removed = list.remove(position);
 
         assertEquals(toBeRemoved, removed);
-        // The list length should be decreased when item is removed
         assertEquals(len - 1, list.size());
     }
 
-    private void setWithAssertions(MyList list, Object item, int position){
+    private <T> void setWithAssertions(MyGenericLinkedList<T> list, T item, int position){
         int truePosition = Math.max(0, Math.min(position, list.size() - 1));
         Object toBeReplaced = list.get(truePosition);
 
@@ -252,5 +258,6 @@ public abstract class MyListTest {
         assertEquals(toBeReplaced, replaced);
         assertEquals(item, list.get(truePosition));
     }
+
 
 }

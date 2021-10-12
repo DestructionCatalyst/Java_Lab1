@@ -3,11 +3,12 @@ package ru.mephi.komzavladislav.lab1;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MyLinkedListTest extends MyListTest{
+class MyLinkedListTest extends MyListTest {
 
     @BeforeEach
     void setUp() {
@@ -40,8 +41,10 @@ class MyLinkedListTest extends MyListTest{
         listOfLists.add(emptyList, 0);
         listOfLists.add(oneItemList, 1);
 
-        ((MyLinkedList)listOfLists.get(0)).add(0);
-        assertEquals(3, ((MyLinkedList)listOfLists.get(2)).get(3));
+        ((MyLinkedList) listOfLists.get(0)).add(0);
+        assertEquals(3, ((MyLinkedList) listOfLists.get(2)).get(3));
 
     }
+
+
 }
