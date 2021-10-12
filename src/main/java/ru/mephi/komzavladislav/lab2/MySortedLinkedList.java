@@ -53,12 +53,6 @@ public class MySortedLinkedList<T extends Comparable<T>> extends MyGenericLinked
         throw new UnsupportedOperationException("This is a sorted list, you can't change items, only add and remove");
     }
 
-    // TODO binary search
-    @Override
-    public int index(T item) {
-        return super.index(item);
-    }
-
     public static <E extends Comparable<E>> MySortedLinkedList<E> mergeSortedLists(MySortedLinkedList<E> list1,
                                                                                     MySortedLinkedList<E> list2){
         MySortedLinkedList<E> resultList = new MySortedLinkedList<>();
