@@ -45,7 +45,7 @@ public class MyGenericLinkedList<T> implements Iterable<T>{
             ListItem<T> prev = itemAtPosition(position - 1);
 
             ListItem<T> afterInserted = prev.getNext();
-            toInsert = new ListItem<T>(item, afterInserted);
+            toInsert = new ListItem<>(item, afterInserted);
             prev.setNext(toInsert);
         }
 

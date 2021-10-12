@@ -3,7 +3,6 @@ package ru.mephi.komzavladislav.lab2;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
@@ -20,12 +19,12 @@ class MyGenericLinkedListTest {
 
     @BeforeEach
     void setUp(){
-        emptyList = new MyGenericLinkedList<Integer>();
+        emptyList = new MyGenericLinkedList<>();
 
-        oneItemList = new MyGenericLinkedList<String>();
+        oneItemList = new MyGenericLinkedList<>();
         oneItemList.add(oneItemListItem);
 
-        tenItemsList = new MyGenericLinkedList<Double>();
+        tenItemsList = new MyGenericLinkedList<>();
         for (int i = 0; i < 10; i++) {
             tenItemsList.add((double) i);
         }

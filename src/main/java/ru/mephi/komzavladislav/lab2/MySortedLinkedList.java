@@ -1,7 +1,5 @@
 package ru.mephi.komzavladislav.lab2;
 
-import ru.mephi.komzavladislav.lab1.MyLinkedList;
-
 /**
  * A linked list that is guaranteed to be sorted
  *
@@ -33,11 +31,11 @@ public class MySortedLinkedList<T extends Comparable<T>> extends MyGenericLinked
 
         if (ptr == head){
             ListItem<T> afterInserted = head;
-            toInsert = new ListItem<T>(item, afterInserted);
+            toInsert = new ListItem<>(item, afterInserted);
             head = toInsert;
         }
         else {
-            toInsert = new ListItem<T>(item, ptr);
+            toInsert = new ListItem<>(item, ptr);
             prev.setNext(toInsert);
         }
         length++;
