@@ -51,16 +51,16 @@ public class MySortedLinkedList<T extends Comparable<T>> extends MyGenericLinked
         throw new UnsupportedOperationException("This is a sorted list, you can't change items, only add and remove");
     }
 
-    public static <E extends Comparable<E>> MySortedLinkedList<E> mergeSortedLists(MySortedLinkedList<E> list1,
-                                                                                    MySortedLinkedList<E> list2){
-        MySortedLinkedList<E> resultList = new MySortedLinkedList<>();
+    public static <T extends Comparable<T>> MySortedLinkedList<T> mergeSortedLists(MySortedLinkedList<T> list1,
+                                                                                    MySortedLinkedList<T> list2){
+        MySortedLinkedList<T> resultList = new MySortedLinkedList<>();
 
-        ListItem<E> ptr1 = list1.head;
-        ListItem<E> ptr2 = list2.head;
+        ListItem<T> ptr1 = list1.head;
+        ListItem<T> ptr2 = list2.head;
 
         while (ptr1 != null && ptr2 != null){
-            E val1 = ptr1.getValue();
-            E val2 = ptr2.getValue();
+            T val1 = ptr1.getValue();
+            T val2 = ptr2.getValue();
             if(val1.compareTo(val2) > 0){
                 resultList.add(val2);
                 ptr2 = ptr2.getNext();
@@ -70,7 +70,7 @@ public class MySortedLinkedList<T extends Comparable<T>> extends MyGenericLinked
                 ptr1 = ptr1.getNext();
             }
         }
-        ListItem<E> leftovers;
+        ListItem<T> leftovers;
         if (ptr1 != null) {
             leftovers = ptr1;
         }

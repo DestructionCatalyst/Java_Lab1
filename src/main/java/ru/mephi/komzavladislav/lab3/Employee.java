@@ -1,0 +1,300 @@
+package ru.mephi.komzavladislav.lab3;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/*
+    Необходимо релизовать простого бота для выдачи зарплаты сотрудникам:
+     class Employee с полями: givenName, surName, age, gender(enum MALE, FEMALE), role(enum STAFF, MANAGER, EXECUTIVE),
+      dept, eMail, phone, address, city, state (область), code (код области);
+
+    Реализовать паттерн builder (нельзя использовать lombok)
+
+    Переопределить toString()
+
+    Реализовать метод public static List<Employee> createShortList()
+    - создает список сотрудников и заполняет его различными сотрдниками не менее 7 (Экземплярами класса Employee).
+    Значения полей должны быть разнообразны.
+
+    class Accountant без полей:
+
+    public void paySalary(Employee employee); Выплату зарплаты реализовать через вывод в консоль сообщения о выплате
+
+    public void payPremium(Employee employee); Выплату премии реализовать через вывод в консоль сообщения о выплате.
+    Процент премии хранится в enum role (STAFF = 10%, MANAGER = 20%, EXECUTIVE = 30%)
+
+
+    Задача: На основе написанных классов продемонстрируйте работу со стримами:
+        Выплата премии женщинам сотрудникам
+        Выплата зарплаты сотрудникам определенного департамента
+        Выплата премии сотрудникам старше 30, работающим в определенном департаменте
+        Выплата зарплаты менеджерам
+        Выплата премии стаффу
+ */
+
+public class Employee {
+    private String givenName;
+    private String surName;
+    private int age;
+    private Gender gender;
+    private Role role;
+    private String dept;
+    private String phone;
+    private String address;
+    private String city;
+    private String state;
+    private int code;
+
+    private Employee() {
+    }
+
+    static class Builder{
+        private String givenName = "";
+        private String surName = "";
+        private int age = 18;
+        private Gender gender = Gender.MALE;
+        private Role role = Role.STAFF;
+        private String dept = "";
+        private String phone = "";
+        private String address = "";
+        private String city = "";
+        private String state = "";
+        private int code = 0;
+
+        public Builder setGivenName(String givenName) {
+            this.givenName = givenName;
+            return this;
+        }
+
+        public Builder setSurName(String surName) {
+            this.surName = surName;
+            return this;
+        }
+
+        public Builder setAge(int age) {
+            this.age = age;
+            return this;
+        }
+
+        public Builder setGender(Gender gender) {
+            this.gender = gender;
+            return this;
+        }
+
+        public Builder setRole(Role role) {
+            this.role = role;
+            return this;
+        }
+
+        public Builder setDept(String dept) {
+            this.dept = dept;
+            return this;
+        }
+
+        public Builder setPhone(String phone) {
+            this.phone = phone;
+            return this;
+        }
+
+        public Builder setAddress(String address) {
+            this.address = address;
+            return this;
+        }
+
+        public Builder setCity(String city) {
+            this.city = city;
+            return this;
+        }
+
+        public Builder setState(String state) {
+            this.state = state;
+            return this;
+        }
+
+        public Builder setCode(int code) {
+            this.code = code;
+            return this;
+        }
+
+        public Employee build(){
+            Employee employee = new Employee();
+
+            employee.address = address;
+            employee.age = age;
+            employee.city = city;
+            employee.code = code;
+            employee.dept = dept;
+            employee.gender = gender;
+            employee.givenName = givenName;
+            employee.phone = phone;
+            employee.role = role;
+            employee.state = state;
+            employee.surName = surName;
+
+            return employee;
+        }
+    }
+
+    public String getGivenName() {
+        return givenName;
+    }
+
+    public String getSurName() {
+        return surName;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public String getDept() {
+        return dept;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    @Override
+    public String toString() {
+        return  givenName + ' ' +
+                surName +
+                ", " + age + " лет" +
+                ", " + gender +
+                ", позиция: " + role +
+                ", департамент: " + dept +
+                ", телефон: '" + phone +
+                ", адрес: " + state +
+                " (" + code +
+                "), " + city +
+                ", " + address;
+    }
+
+    public static List<Employee> createShortList(){
+        List<Employee> shortList = new ArrayList<>();
+
+        shortList.add(new Employee.Builder()
+                .setGivenName("Александр")
+                .setSurName("Иванов")
+                .setAge(35)
+                .setGender(Gender.MALE)
+                .setRole(Role.EXECUTIVE)
+                .setDept("Главный")
+                .setPhone("+78005553535")
+                .setAddress("Ленинский пр., д. 20")
+                .setCity("Москва")
+                .setState("Москва")
+                .setCode(77)
+                .build());
+
+        shortList.add(new Employee.Builder()
+                .setGivenName("Василий")
+                .setSurName("Петров")
+                .setAge(29)
+                .setGender(Gender.MALE)
+                .setRole(Role.MANAGER)
+                .setDept("Главный")
+                .setPhone("+78005553536")
+                .setAddress("пр. Вернадского, д. 33")
+                .setCity("Москва")
+                .setState("Москва")
+                .setCode(77)
+                .build());
+
+        shortList.add(new Employee.Builder()
+                .setGivenName("Мария")
+                .setSurName("Сидорова")
+                .setAge(26)
+                .setGender(Gender.FEMALE)
+                .setRole(Role.MANAGER)
+                .setDept("Санкт-Петербургский филиал")
+                .setPhone("+78005553537")
+                .setAddress("Невский пр., д. 20")
+                .setCity("Санкт-Петербург")
+                .setState("Санкт-Петербург")
+                .setCode(78)
+                .build());
+
+        shortList.add(new Employee.Builder()
+                .setGivenName("Алексей")
+                .setSurName("Кузнецов")
+                .setAge(23)
+                .setGender(Gender.MALE)
+                .setRole(Role.STAFF)
+                .setDept("Главный")
+                .setPhone("+78005553538")
+                .setAddress("Каширское ш., д. 40")
+                .setCity("Москва")
+                .setState("Москва")
+                .setCode(77)
+                .build());
+
+        shortList.add(new Employee.Builder()
+                .setGivenName("Ирина")
+                .setSurName("Сергеева")
+                .setAge(31)
+                .setGender(Gender.FEMALE)
+                .setRole(Role.STAFF)
+                .setDept("Главный")
+                .setPhone("+78005553539")
+                .setAddress("ул. Ленина, д.5")
+                .setCity("Подольск")
+                .setState("Московская область")
+                .setCode(50)
+                .build());
+
+        shortList.add(new Employee.Builder()
+                .setGivenName("Маргарита")
+                .setSurName("Александрова")
+                .setAge(29)
+                .setGender(Gender.FEMALE)
+                .setRole(Role.STAFF)
+                .setDept("Санкт-Петербургский филиал")
+                .setPhone("+78005553540")
+                .setAddress("Московский пр., д. 100")
+                .setCity("Санкт-Петербург")
+                .setState("Санкт-Петербург")
+                .setCode(78)
+                .build());
+
+        shortList.add(new Employee.Builder()
+                .setGivenName("Павел")
+                .setSurName("Николаев")
+                .setAge(40)
+                .setGender(Gender.MALE)
+                .setRole(Role.STAFF)
+                .setDept("Санкт-Петербургский филиал")
+                .setPhone("+78005553541")
+                .setAddress("Парковая ул., д. 20")
+                .setCity("Пушкин")
+                .setState("Ленинградская область")
+                .setCode(47)
+                .build());
+
+        return shortList;
+    }
+}
