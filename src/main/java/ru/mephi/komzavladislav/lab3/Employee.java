@@ -187,7 +187,7 @@ public class Employee {
                 ", " + gender +
                 ", позиция: " + role +
                 ", департамент: " + dept +
-                ", телефон: '" + phone +
+                ", телефон: " + phone +
                 ", адрес: " + state +
                 " (" + code +
                 "), " + city +
