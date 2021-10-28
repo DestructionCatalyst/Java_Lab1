@@ -8,25 +8,25 @@ public class Accountant {
         Accountant accountant = new Accountant();
         List<Employee> employees = Employee.createShortList();
 
-        System.out.println("Выплата премии женщинам сотрудникам");
+        System.out.println("Premium to women");
         accountant.payPremiumWomen(employees);
-        System.out.println("Выплата зарплаты сотрудникам определенного департамента");
+        System.out.println("Salary to SPB department");
         accountant.paySpbDepartment(employees);
-        System.out.println("Выплата премии сотрудникам старше 30, работающим в определенном департаменте");
+        System.out.println("Premium to main department for workers over 30");
         accountant.payPremiumExperiencedInMainDepartment(employees);
-        System.out.println("Выплата зарплаты менеджерам");
+        System.out.println("Salary to managers");
         accountant.payManagers(employees);
-        System.out.println("Выплата премии стаффу");
+        System.out.println("Premium to staff");
         accountant.payPremiumStaff(employees);
     }
 
     public void paySalary(Employee employee){
-        System.out.println("Выплачена зарплата работни" + employee.getGender().getEnding() + " " + employee);
+        System.out.println("Paid salary to: " + employee);
     }
 
     public void payPremium(Employee employee){
-        System.out.println("Выплачена премия в размере " + employee.getRole().premiumRate +
-                " ставки работни" + employee.getGender().getEnding() + " " + employee);
+        System.out.println("Paid premium equal to " + employee.getRole().premiumRate +
+                " of salary to: " + employee);
     }
 
     public void payPremiumWomen(List<Employee> employees){
@@ -37,26 +37,26 @@ public class Accountant {
 
     public void payMainDepartment(List<Employee> employees){
         employees.stream()
-                .filter(p -> p.getDept().equals("Главный"))
+                .filter(p -> p.getDept().equals("Main"))
                 .forEach(this::paySalary);
     }
 
     public void paySpbDepartment(List<Employee> employees){
         employees.stream()
-                .filter(p -> p.getDept().equals("Санкт-Петербургский филиал"))
+                .filter(p -> p.getDept().equals("Saint-Petersburg department"))
                 .forEach(this::paySalary);
     }
 
     public void payPremiumExperiencedInMainDepartment(List<Employee> employees){
         employees.stream()
-                .filter(p -> p.getDept().equals("Главный"))
+                .filter(p -> p.getDept().equals("Main"))
                 .filter(p -> p.getAge() > 30)
                 .forEach(this::payPremium);
     }
 
     public void payPremiumExperiencedInSpbDepartment(List<Employee> employees){
         employees.stream()
-                .filter(p -> p.getDept().equals("Санкт-Петербургский филиал"))
+                .filter(p -> p.getDept().equals("Saint-Petersburg department"))
                 .filter(p -> p.getAge() > 30)
                 .forEach(this::payPremium);
     }

@@ -19,18 +19,18 @@ public class EmployeeOperations {
         employeeOperations.saveEmployeeData(employees);
 
         List<Employee> moscowEmployees = employees.stream()
-                .filter(employee -> employee.getDept().equals("Главный"))
+                .filter(employee -> employee.getDept().equals("Main"))
                 .collect(Collectors.toList());
         List<Employee> spbEmployees = employees.stream()
-                .filter(employee -> employee.getDept().equals("Санкт-Петербургский филиал"))
+                .filter(employee -> employee.getDept().equals("Saint-Petersburg department"))
                 .collect(Collectors.toList());
 
-        System.out.println("Москва: ");
+        System.out.println("Moscow: ");
         employeeOperations.printAddressList(moscowEmployees);
-        System.out.println("Санкт-Петербург: ");
+        System.out.println("Saint-Petersburg: ");
         employeeOperations.printAddressList(spbEmployees);
 
-        employeeOperations.hireCandidate(employees, 0, "Главный", Role.STAFF);
+        employeeOperations.hireCandidate(employees, 0, "Main", Role.STAFF);
         System.out.println(employees.get(employees.size() - 1));
 
         employeeOperations.getSubordinates(employees);
@@ -84,17 +84,19 @@ public class EmployeeOperations {
     }
 
     public void getSubordinates(List<Employee> employees){
-        // Менеджеры подчинятся всем директорам, рабочие - менеджерам своего департамента
+        // Managers are subordinate to all executives,
+        // staff is subordinate to managers of their department
         BiPredicate<Employee, Employee> isSubordinate = (e1, e2) ->
-                e1.getRole() == Role.MANAGER && e2.getRole() == Role.EXECUTIVE ||
-                e1.getDept().equals(e2.getDept()) && e1.getRole() == Role.STAFF && e2.getRole() == Role.MANAGER;
+                e1.getRole().equals(Role.MANAGER) && e2.getRole().equals(Role.EXECUTIVE) ||
+                e1.getDept().equals(e2.getDept()) && e1.getRole().equals(Role.STAFF) &&
+                        e2.getRole().equals(Role.MANAGER);
 
         employees.forEach(
                 e1 -> employees.forEach(
                         e2 -> {
                             if (isSubordinate.test(e1, e2)){
                                 System.out.println(e1.getGivenName() + " " + e1.getSurName() +
-                                        " - подчиненный сотрудника " + e2.getGivenName() + " " + e2.getSurName());
+                                        " is subordinate to " + e2.getGivenName() + " " + e2.getSurName());
                             }
                         }
                 )

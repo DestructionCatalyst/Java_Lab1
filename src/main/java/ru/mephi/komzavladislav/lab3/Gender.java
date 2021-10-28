@@ -5,21 +5,14 @@ public enum Gender {
         public String toString(){
             return "M";
         }
-        public String getEnding(){
-            return "ку";
-        }
     },
     FEMALE{
         public String toString(){
-            return "Ж";
-        }
-        public String getEnding(){
-            return "це";
+            return "F";
         }
     };
 
     @Override
     public abstract String toString();
 
-    public abstract String getEnding();
 }

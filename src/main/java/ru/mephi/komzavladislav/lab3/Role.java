@@ -3,17 +3,17 @@ package ru.mephi.komzavladislav.lab3;
 public enum Role {
     STAFF(0.1) {
         public String toString(){
-            return "Персонал";
+            return "Staff";
         }
     },
     MANAGER(0.2) {
         public String toString() {
-            return "Менеджер";
+            return "Manager";
         }
     },
     EXECUTIVE(0.3) {
         public String toString() {
-            return "Руководство";
+            return "Executive";
         }
     },;
 

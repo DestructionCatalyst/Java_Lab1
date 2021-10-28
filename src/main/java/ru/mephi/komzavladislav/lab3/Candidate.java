@@ -148,10 +148,10 @@ public class Candidate {
     public String toString() {
         return  givenName + ' ' +
                 surName +
-                ", " + age + " лет" +
+                ", " + age + " years old" +
                 ", " + gender +
-                ", телефон: " + phone +
-                ", адрес: " + state +
+                ", phone: " + phone +
+                ", address: " + state +
                 " (" + code +
                 "), " + city +
                 ", " + address;
@@ -161,26 +161,26 @@ public class Candidate {
         List<Candidate> shortList = new ArrayList<>();
 
         shortList.add(new Builder()
-                .setGivenName("Николай")
-                .setSurName("Гончаров")
+                .setGivenName("Nikolai")
+                .setSurName("Goncharov")
                 .setAge(31)
                 .setGender(Gender.MALE)
                 .setPhone("+78005553500")
-                .setAddress("Кутузовский пр., д. 20")
-                .setCity("Москва")
-                .setState("Москва")
+                .setAddress("Kutuzovsky av., h. 20")
+                .setCity("Moscow")
+                .setState("Moscow")
                 .setCode(77)
                 .build());
 
         shortList.add(new Builder()
-                .setGivenName("Анастасия")
-                .setSurName("Петрова")
+                .setGivenName("Anastasia")
+                .setSurName("Petrova")
                 .setAge(29)
                 .setGender(Gender.MALE)
                 .setPhone("+78005553536")
-                .setAddress("Московская ул., д. 20")
-                .setCity("Пушкин")
-                .setState("Ленинградская область")
+                .setAddress("Moskovskaya st., h. 20")
+                .setCity("Pushkin")
+                .setState("Leningrad region")
                 .setCode(77)
                 .build());
 

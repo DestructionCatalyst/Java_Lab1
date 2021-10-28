@@ -183,12 +183,12 @@ public class Employee {
     public String toString() {
         return  givenName + ' ' +
                 surName +
-                ", " + age + " лет" +
+                ", " + age + " years old" +
                 ", " + gender +
-                ", позиция: " + role +
-                ", департамент: " + dept +
-                ", телефон: " + phone +
-                ", адрес: " + state +
+                ", position: " + role +
+                ", department: " + dept +
+                ", phone: " + phone +
+                ", address: " + state +
                 " (" + code +
                 "), " + city +
                 ", " + address;
@@ -198,100 +198,100 @@ public class Employee {
         List<Employee> shortList = new ArrayList<>();
 
         shortList.add(new Employee.Builder()
-                .setGivenName("Александр")
-                .setSurName("Иванов")
+                .setGivenName("Alexander")
+                .setSurName("Ivanov")
                 .setAge(35)
                 .setGender(Gender.MALE)
                 .setRole(Role.EXECUTIVE)
-                .setDept("Главный")
+                .setDept("Main")
                 .setPhone("+78005553535")
-                .setAddress("Ленинский пр., д. 20")
-                .setCity("Москва")
-                .setState("Москва")
+                .setAddress("Leninskiy av., h. 20")
+                .setCity("Moscow")
+                .setState("Moscow")
                 .setCode(77)
                 .build());
 
         shortList.add(new Employee.Builder()
-                .setGivenName("Василий")
-                .setSurName("Петров")
+                .setGivenName("Vasily")
+                .setSurName("Petrov")
                 .setAge(29)
                 .setGender(Gender.MALE)
                 .setRole(Role.MANAGER)
-                .setDept("Главный")
+                .setDept("Main")
                 .setPhone("+78005553536")
-                .setAddress("пр. Вернадского, д. 33")
-                .setCity("Москва")
-                .setState("Москва")
+                .setAddress("Vernadskogo av., h. 33")
+                .setCity("Moscow")
+                .setState("Moscow")
                 .setCode(77)
                 .build());
 
         shortList.add(new Employee.Builder()
-                .setGivenName("Мария")
-                .setSurName("Сидорова")
+                .setGivenName("Maria")
+                .setSurName("Sidorova")
                 .setAge(26)
                 .setGender(Gender.FEMALE)
                 .setRole(Role.MANAGER)
-                .setDept("Санкт-Петербургский филиал")
+                .setDept("Saint-Petersburg department")
                 .setPhone("+78005553537")
-                .setAddress("Невский пр., д. 20")
-                .setCity("Санкт-Петербург")
-                .setState("Санкт-Петербург")
+                .setAddress("Nevsky av., h. 20")
+                .setCity("Saint-Petersburg")
+                .setState("Saint-Petersburg")
                 .setCode(78)
                 .build());
 
         shortList.add(new Employee.Builder()
-                .setGivenName("Алексей")
-                .setSurName("Кузнецов")
+                .setGivenName("Alexey")
+                .setSurName("Kuznetsov")
                 .setAge(23)
                 .setGender(Gender.MALE)
                 .setRole(Role.STAFF)
-                .setDept("Главный")
+                .setDept("Main")
                 .setPhone("+78005553538")
-                .setAddress("Каширское ш., д. 40")
-                .setCity("Москва")
-                .setState("Москва")
+                .setAddress("Kashirskoye hw., h. 40")
+                .setCity("Moscow")
+                .setState("Moscow")
                 .setCode(77)
                 .build());
 
         shortList.add(new Employee.Builder()
-                .setGivenName("Ирина")
-                .setSurName("Сергеева")
+                .setGivenName("Irina")
+                .setSurName("Sergeeva")
                 .setAge(31)
                 .setGender(Gender.FEMALE)
                 .setRole(Role.STAFF)
-                .setDept("Главный")
+                .setDept("Main")
                 .setPhone("+78005553539")
-                .setAddress("ул. Ленина, д.5")
-                .setCity("Подольск")
-                .setState("Московская область")
+                .setAddress("Lenina st., h.5")
+                .setCity("Podolsk")
+                .setState("Moscow region")
                 .setCode(50)
                 .build());
 
         shortList.add(new Employee.Builder()
-                .setGivenName("Маргарита")
-                .setSurName("Александрова")
+                .setGivenName("Margarita")
+                .setSurName("Alexandrova")
                 .setAge(29)
                 .setGender(Gender.FEMALE)
                 .setRole(Role.STAFF)
-                .setDept("Санкт-Петербургский филиал")
+                .setDept("Saint-Petersburg department")
                 .setPhone("+78005553540")
-                .setAddress("Московский пр., д. 100")
-                .setCity("Санкт-Петербург")
-                .setState("Санкт-Петербург")
+                .setAddress("Moskovskiy av., h. 100")
+                .setCity("Saint-Petersburg")
+                .setState("Saint-Petersburg")
                 .setCode(78)
                 .build());
 
         shortList.add(new Employee.Builder()
-                .setGivenName("Павел")
-                .setSurName("Николаев")
+                .setGivenName("Pavel")
+                .setSurName("Nikolaev")
                 .setAge(40)
                 .setGender(Gender.MALE)
                 .setRole(Role.STAFF)
-                .setDept("Санкт-Петербургский филиал")
+                .setDept("Saint-Petersburg department")
                 .setPhone("+78005553541")
-                .setAddress("Парковая ул., д. 20")
-                .setCity("Пушкин")
-                .setState("Ленинградская область")
+                .setAddress("Parkovaya st., h. 20")
+                .setCity("Pushkin")
+                .setState("Leningrad region")
                 .setCode(47)
                 .build());
 
