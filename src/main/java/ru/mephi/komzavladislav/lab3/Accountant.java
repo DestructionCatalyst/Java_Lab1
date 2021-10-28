@@ -20,18 +20,18 @@ public class Accountant {
         accountant.payPremiumStaff(employees);
     }
 
-    public void paySalary(Employee employee){
+    private void paySalary(Employee employee){
         System.out.println("Paid salary to: " + employee);
     }
 
-    public void payPremium(Employee employee){
+    private void payPremium(Employee employee){
         System.out.println("Paid premium equal to " + employee.getRole().premiumRate +
                 " of salary to: " + employee);
     }
 
     public void payPremiumWomen(List<Employee> employees){
         employees.stream()
-                .filter(p -> p.getGender() == Gender.FEMALE)
+                .filter(p -> p.getGender().equals(Gender.FEMALE))
                 .forEach(this::payPremium);
     }
 
@@ -63,13 +63,13 @@ public class Accountant {
 
     public void payManagers(List<Employee> employees){
         employees.stream()
-                .filter(p -> p.getRole() == Role.MANAGER)
+                .filter(p -> p.getRole().equals(Role.MANAGER))
                 .forEach(this::paySalary);
     }
 
     public void payPremiumStaff(List<Employee> employees){
         employees.stream()
-                .filter(p -> p.getRole() == Role.STAFF)
+                .filter(p -> p.getRole().equals(Role.STAFF))
                 .forEach(this::payPremium);
     }
 }
