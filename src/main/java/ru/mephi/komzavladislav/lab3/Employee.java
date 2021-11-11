@@ -184,7 +184,7 @@ public class Employee {
         return  givenName + ' ' +
                 surName +
                 ", " + age + " years old" +
-                ", " + gender +
+                ", " + gender.toString().substring(0, 1) +
                 ", position: " + role +
                 ", department: " + dept +
                 ", phone: " + phone +

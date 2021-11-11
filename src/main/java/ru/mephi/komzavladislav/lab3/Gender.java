@@ -1,18 +1,24 @@
 package ru.mephi.komzavladislav.lab3;
 
 public enum Gender {
-    MALE{
+    MALE(65)/*{
         public String toString(){
             return "M";
         }
-    },
-    FEMALE{
+    }*/,
+    FEMALE(60)/*{
         public String toString(){
             return "F";
         }
-    };
+    }*/;
 
-    @Override
-    public abstract String toString();
+    public int retirementAge;
+
+    Gender(int retirementAge) {
+        this.retirementAge = retirementAge;
+    }
+
+    //@Override
+    //public abstract String toString();
 
 }
